@@ -46,5 +46,30 @@ return require('packer').startup(function(use)
           {'rafamadriz/friendly-snippets'},
       }
   }
+
   use {'numToStr/Comment.nvim'}
+
+  use({
+      "epwalsh/obsidian.nvim",
+      tag = "*",  -- recommended, use latest release instead of latest commit
+      requires = {
+          -- Required.
+          "nvim-lua/plenary.nvim",
+
+          -- see below for full list of optional dependencies 👇
+      },
+      config = function()
+          require("obsidian").setup({
+              workspaces = {
+                  {
+                      name = "personal",
+                      path = "~/Documents/Obsidian Vault/"
+                  },
+              },
+
+              -- see below for full list of options 👇
+          })
+      end,
+  })
+  
 end)
